@@ -6,9 +6,9 @@
   (if (> a b)
       1
       (* (term a)
-         (product term (next a 1) next b))))
+         (product term (next a) next b))))
 
-(define (inc x y)
+(define (inc x)
   (+ x 1)
   )
 
@@ -25,3 +25,4 @@
       (/ (+ x 2) (+ 1 x))
       (/ (+ 1 x) (+ x 1))
   )
+ )
