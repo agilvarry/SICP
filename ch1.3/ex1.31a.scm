@@ -20,9 +20,13 @@
 (product factor 1 inc 9)
 ;;362880
 
-(define (pi-prod x)
-  (if (even? x)
-      (/ (+ x 2) (+ 1 x))
-      (/ (+ 1 x) (+ x 1))
+
+(define (pi x)
+  (define (pi-prod x)
+    (if (even? x)
+        (/ (+ x 2) (+ 1 x))
+        (/ (+ 1 x) (+ x 1))
+        )
+    )
+  (product pi-prod 1 inc n)
   )
- )
