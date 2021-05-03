@@ -9,7 +9,7 @@
 ;                 (cc (- amount
 ;                        (first-denomination kinds-of-coins))
 ;                     kinds-of-coins)))))
-I
+
 ;;;as a sentence
 (define (count-change amount)
   (cc amount '(5 1)))
