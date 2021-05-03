@@ -10,7 +10,6 @@
       )
   )
 
-;;b
 (define (cont-frac n d k)
   (define (iter x res)
     (if (= x 0)
