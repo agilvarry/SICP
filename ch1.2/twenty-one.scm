@@ -61,17 +61,17 @@
 ;;;Q1
 (define (best-total hand)
   (if (and (or (member? 'ah hand) (member? 'ad hand) (member? 'as hand) (member? 'ac hand))
-            (< (count-hand hand 0) 11))
-   (+ (count-hand hand 0) 10)
-   (count-hand hand 0)
-   )
+           (< (count-hand hand 0) 11))
+      (+ (count-hand hand 0) 10)
+      (count-hand hand 0)
+      )
   )
 ;(best-total '(ad 8s)) ;19
 ;(best-total '(ad 8s 5h)) ;14
 ;(best-total '(ad as 9h)) ;21
 
 ;;;Q2
-(define (stop-at-17 hand next)
+(define (stop-at-17 hand dealer-up)
   (if (< (best-total hand) 17)
       #t
       #f))
@@ -85,10 +85,51 @@
         )
     )
   (iter n 0)
-)
+  )
 
 
-(play-n stop-at-17 5)
+;(play-n stop-at-17 5)
+
+(define (dealer-help-b up)
+  (if (or (member? '2 up)
+          (member? '3 up)
+          (member? '4 up)
+          (member? '5 up)
+          (equal? '6  up))
+      #t
+      #f))
+
+
+
+(define (dealer-help-a up)
+  (if (or (member? 'a up)
+          (member? 'k up)
+          (member? 'q up)
+          (member? 'j up)
+          (member? '7 up)
+          (member? '8 up)
+          (member? '9 up)
+          (equal? '10 (bl up)))
+      #t
+      #f))
+;(dealer-help-b '9)
+
+;;Q4
+(define (dealer-sensitive hand dealer-up)
+  (if (or
+       (and (< (best-total hand) 17) (dealer-help-a dealer-up)
+       (and (< (best-total hand) 12) (dealer-help-b dealer-up))))
+      #t
+      #f
+      ))
+
+
+
+
+
+
+
+
 
 
 
