@@ -58,7 +58,7 @@
       (count-hand (bf hand) (+ (value (first (first hand))) total))   
       )
   )
-
+;;;Q1
 (define (best-total hand)
   (if (and (or (member? 'ah hand) (member? 'ad hand) (member? 'as hand) (member? 'ac hand))
             (< (count-hand hand 0) 11))
@@ -66,17 +66,12 @@
    (count-hand hand 0)
    )
   )
+;(best-total '(ad 8s)) ;19
+;(best-total '(ad 8s 5h)) ;14
+;(best-total '(ad as 9h)) ;21
 
-
-
-(best-total '(ad 8s)) ;19
-(best-total '(ad 8s 5h)) ;14
-(best-total '(ad as 9h)) ;21
-
-
-
-
-
-
-
-;                                      32
+;;;Q2
+(define (stop-at-17 hand)
+  (if (= (best-total hand) 17)
+      #t
+      #f))
