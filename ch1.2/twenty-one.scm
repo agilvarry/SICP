@@ -87,35 +87,28 @@
   (iter n 0)
   )
 
-
-;(play-n stop-at-17 5)
-
-(define (dealer-help-b up)
-  (if (or (member? '2 up)
-          (member? '3 up)
-          (member? '4 up)
-          (member? '5 up)
-          (equal? '6  up))
-      #t
-      #f))
-
-
-
-(define (dealer-help-a up)
-  (if (or (member? 'a up)
-          (member? 'k up)
-          (member? 'q up)
-          (member? 'j up)
-          (member? '7 up)
-          (member? '8 up)
-          (member? '9 up)
-          (equal? '10 (bl up)))
-      #t
-      #f))
-;(dealer-help-b '9)
-
 ;;Q4
 (define (dealer-sensitive hand dealer-up)
+  (define (dealer-help-b up)
+    (if (or (member? '2 up)
+            (member? '3 up)
+            (member? '4 up)
+            (member? '5 up)
+            (equal? '6  up))
+        #t
+        #f))
+  (define (dealer-help-a up)
+    (if (or (member? 'a up)
+            (member? 'k up)
+            (member? 'q up)
+            (member? 'j up)
+            (member? '7 up)
+            (member? '8 up)
+            (member? '9 up)
+            (equal? '10 (bl up)))
+        #t
+        #f))
+
   (if (or
        (and (< (best-total hand) 17) (dealer-help-a dealer-up)
             (and (< (best-total hand) 12) (dealer-help-b dealer-up))))
@@ -126,13 +119,24 @@
 ;;Q5
 (define (stop-at n)
   (lambda (hand up)
-  (if (< (best-total hand) n)
+    (if (< (best-total hand) n)
+        #t
+        #f)))
+
+
+;;Q6
+(define (valentine hand up)
+  (define (heart-in hand)
+    (cond ((empty? hand) #f)
+          ((member? 'h (first hand)) #t)
+          (else heart-in (bf hand))
+          ))
+
+  (if (or (and (heart-in hand) (< (best-total hand) 19))
+          (< (best-total hand) 17))
       #t
-      #f)))
-
-
-
-
+      #f)
+  )
 
 
 
