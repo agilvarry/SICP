@@ -138,6 +138,42 @@
       #f)
   )
 
+(define (suit-in hand suit)
+  (cond ((empty? hand) #f)
+        ((member? suit (first hand)) #t)
+        (else suit-in (bf hand))
+        ))
+
+;;Q7
+(define (suit-strategy suit strategy-yes strategy-no)
+  (lambda (hand up)
+    (if (suit-in hand suit)
+        (strategy-yes hand up)
+        (strategy-no hand up)
+        )))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
