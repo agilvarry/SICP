@@ -66,9 +66,6 @@
       (count-hand hand 0)
       )
   )
-;(best-total '(ad 8s)) ;19
-;(best-total '(ad 8s 5h)) ;14
-;(best-total '(ad as 9h)) ;21
 
 ;;;Q2
 (define (stop-at-17 hand dealer-up)
@@ -157,17 +154,17 @@
   (lambda (hand up)
     (if (or (and (strat-a hand up) (strat-b hand up))
             (and (strat-a hand up) (strat-c hand up))
-            (and (strat-b hand up) (strat-c hand up))))
+            (and (strat-b hand up) (strat-c hand up)))
     #t
     #f
-    ))
+    )))
 
 ;;Q9
 (define (reckless strat)
   (lambda (hand up)
     (if (equal? (strat hand) #f) 
         (if (equal? (strat (butlast hand) #t)) #t #f)
-        #f ))
+        #f )))
 
 
 
