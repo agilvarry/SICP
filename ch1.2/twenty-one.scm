@@ -118,12 +118,17 @@
 (define (dealer-sensitive hand dealer-up)
   (if (or
        (and (< (best-total hand) 17) (dealer-help-a dealer-up)
-       (and (< (best-total hand) 12) (dealer-help-b dealer-up))))
+            (and (< (best-total hand) 12) (dealer-help-b dealer-up))))
       #t
       #f
       ))
 
-
+;;Q5
+(define (stop-at n)
+  (lambda (hand up)
+  (if (< (best-total hand) n)
+      #t
+      #f)))
 
 
 
