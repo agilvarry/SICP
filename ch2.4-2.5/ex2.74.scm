@@ -13,7 +13,7 @@
 (define (get-record name division)
   ((operate 'get-record (type-tag division))
    name
-   (contents division-file)))
+   (contents division)))
 ;;divison records must be labeled with a division
 
 ;;b.  Implement for headquarters a get-salary procedure that returns the salary information from a given employee's record from any division's personnel file.
