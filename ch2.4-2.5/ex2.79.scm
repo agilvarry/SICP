@@ -15,4 +15,4 @@
     (and (= (real-part x) (real-part y))
 	 (= (imag-part x) (imag-part y))))
 
-(put 'equ? '(imag1 imag2) equ-comp?)
+(put 'equ? '(comp1 comp2) equ-comp?)
