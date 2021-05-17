@@ -1,12 +1,12 @@
-;;;Exercise 1.6. 
 (define (sqroot x)
-  ;;original from text
+  ;;original from test
   ;(define (good-enough? guess)
   ;  (< (abs (- (square guess) x)) 0.001))
 
   ;;improvement from text problem
   (define (good-enough? guess)
     (< (abs (- (square guess) x)) (* guess 0.001)))
+
 
 
   (define (improve guess)

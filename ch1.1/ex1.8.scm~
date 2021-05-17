@@ -1,5 +1,3 @@
-;;;Exercise 1.8.
-
 (define (cubert x)
 
   (define (good-enough? guess) 
