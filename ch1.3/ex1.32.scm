@@ -23,3 +23,27 @@
 
 (sum identity 1 inc 5)
 (product identity 1 inc 5)
+
+;;b. If your accumulate procedure generates a recursive process, write one that generates an iterative process.
+
+(define (accumulate-iter combiner null-value term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (combiner (term a) result))
+     )
+    )
+  (iter a null-value)
+)
+
+(define (product-iter term a next b)
+  (accumulate-iter * 1 term a next b)
+  )
+
+(define (sum-iter term a next b)
+  (accumulate-iter + 0 term a next b)
+  )
+
+
+(sum-iter identity 1 inc 5)
+(product-iter identity 1 inc 5)
