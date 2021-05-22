@@ -7,7 +7,7 @@
         ))
 
   (define (iter return remain)
- 
+    ;(print return
     (cond ((null? remain)  return)
           
           (((i-parity) (car remain)) 
