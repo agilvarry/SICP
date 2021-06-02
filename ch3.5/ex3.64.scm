@@ -11,4 +11,3 @@
       (stream-limit (stream-cdr s) tolerance)
     )
 )
-
